@@ -7,13 +7,13 @@
     <data>
         <variable
             name="viewmodel"
-            type="br.com.titanz.databindingviewmodel.CouterViewModel" />
+            type="br.com.titanz.databindingviewmodel.ui.counter.CouterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".CounterActivity">
+        tools:context=".ui.counter.CounterActivity">
 
         <TextView
             android:id="@+id/centerTextView"

@@ -1,4 +1,4 @@
-package br.com.titanz.databindingviewmodel
+package br.com.titanz.databindingviewmodel.ui.counter
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

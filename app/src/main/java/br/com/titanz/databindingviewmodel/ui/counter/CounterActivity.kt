@@ -1,9 +1,10 @@
-package br.com.titanz.databindingviewmodel
+package br.com.titanz.databindingviewmodel.ui.counter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import br.com.titanz.databindingviewmodel.R
 import br.com.titanz.databindingviewmodel.databinding.ActivityCounterBinding
 
 class CounterActivity : AppCompatActivity() {
