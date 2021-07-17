@@ -15,6 +15,7 @@ class CounterFragment : Fragment() {
         fun newInstance() = CounterFragment()
     }
 
+    // Instanciando ViewModel
     private val viewModel: CounterViewModel by viewModels()
 
     override fun onCreateView(
@@ -33,7 +34,6 @@ class CounterFragment : Fragment() {
             requireActivity(),
             R.layout.fragment_couter
         )
-
         // Setup ViewModel e LifyCycle
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
