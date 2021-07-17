@@ -1,4 +1,4 @@
-package br.com.titanz.databindingviewmodel
+package br.com.titanz.countermvvm
 
 import org.junit.Test
 

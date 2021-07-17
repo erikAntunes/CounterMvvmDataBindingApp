@@ -1,10 +1,10 @@
-package br.com.titanz.databindingviewmodel.ui.counter
+package br.com.titanz.countermvvm.ui.counter
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class CouterViewModel : ViewModel() {
+class CounterViewModel: ViewModel() {
 
     private var number = 1
 
@@ -22,7 +22,6 @@ class CouterViewModel : ViewModel() {
     fun getNumberRepository(): String {
 
         return number.toString()
-
     }
 
     // Aplicando Regra de Negocio

@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="br.com.titanz.databindingviewmodel.ui.counter.CouterViewModel" />
+            type="br.com.titanz.countermvvm.ui.counter.CounterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,3 +44,5 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+
+
