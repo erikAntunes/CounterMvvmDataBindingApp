@@ -5,18 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import br.com.titanz.countermvvm.R
 import br.com.titanz.countermvvm.databinding.FragmentCouterBinding
+import br.com.titanz.countermvvm.repository.CounterRepository
 
-class CounterFragment : Fragment() {
+class CounterFragment : androidx.fragment.app.Fragment() {
     companion object {
         fun newInstance() = CounterFragment()
     }
 
-    // Instanciando ViewModel
-    private val viewModel: CounterViewModel by viewModels()
+    //Counter ViewModel
+    private lateinit var viewModel: CounterViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +29,12 @@ class CounterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Setup ViewModel Factory
+        viewModel = ViewModelProvider(
+            this,
+            CounterViewModel.CouterViewModelFactory(CounterRepository())
+        ).get(CounterViewModel::class.java)
+
         // Setup DataBinding
         val binding: FragmentCouterBinding = DataBindingUtil.setContentView(
             requireActivity(),
@@ -37,6 +43,5 @@ class CounterFragment : Fragment() {
         // Setup ViewModel e LifyCycle
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
-
     }
 }
