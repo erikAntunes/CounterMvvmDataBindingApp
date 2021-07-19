@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import br.com.titanz.countermvvm.R
 import br.com.titanz.countermvvm.databinding.FragmentCouterBinding
-import br.com.titanz.countermvvm.repository.CounterRepository
+import br.com.titanz.countermvvm.repository.counter.CounterRepository
 
 class CounterFragment : androidx.fragment.app.Fragment() {
     companion object {

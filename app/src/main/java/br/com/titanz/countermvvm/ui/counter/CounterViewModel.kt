@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import br.com.titanz.countermvvm.repository.CounterModel
-import br.com.titanz.countermvvm.repository.CounterRepository
+import br.com.titanz.countermvvm.repository.counter.CounterModel
+import br.com.titanz.countermvvm.repository.counter.CounterRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

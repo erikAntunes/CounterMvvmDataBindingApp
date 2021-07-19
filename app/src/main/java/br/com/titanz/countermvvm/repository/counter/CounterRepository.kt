@@ -1,4 +1,4 @@
-package br.com.titanz.countermvvm.repository
+package br.com.titanz.countermvvm.repository.counter
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
