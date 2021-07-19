@@ -23,7 +23,7 @@ class CounterViewModel(
     val clickCounter: LiveData<String>
         get() = _clickCounter
 
-    // Iniciando Contado no Init da ViewModel
+    // Iniciando Contador no Init da ViewModel
     init {
         _clickCounter.value = adcCounter.toString()
     }
@@ -57,7 +57,7 @@ class CounterViewModel(
         }
     }
 
-    // Setando a variavel do Contador com Valor do Repositório
+    // Setando valor do Contador em Cache no Repositório
     private fun setCounterView(counters: List<CounterModel>) {
         Thread.sleep(2000)
         _clickCounter.value = counters[0].totalCounter.toString()
