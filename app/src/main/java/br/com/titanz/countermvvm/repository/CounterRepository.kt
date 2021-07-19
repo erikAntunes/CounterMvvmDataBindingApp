@@ -5,19 +5,19 @@ import kotlinx.coroutines.withContext
 
 class CounterRepository {
 
-    private var totalCounter = 1
+    private var totalCounterCache = 1
 
     suspend fun getCounterCoroutines(): List<CounterModel> {
         return withContext(Dispatchers.Default) {
             listOf(
                 CounterModel(
-                    totalCounter
+                    totalCounterCache
                 )
             )
         }
     }
 
     fun saveCounterNumber(counter: Int) {
-        totalCounter = counter
+        totalCounterCache = counter
     }
 }
