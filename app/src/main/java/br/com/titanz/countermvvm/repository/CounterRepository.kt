@@ -1,20 +1,23 @@
 package br.com.titanz.countermvvm.repository
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
 class CounterRepository {
-    // TODO REFATORAR COM COROUTINES
-    fun getCounter(callback: (counters: List<CounterModel>) -> Unit) {
-        Thread(Runnable {
-            Thread.sleep(1000)
-            callback.invoke(
-                listOf(
-                    CounterModel(
-                        300
-                    )
+
+    private var totalCounter = 1
+
+    suspend fun getCounterCoroutines(): List<CounterModel> {
+        return withContext(Dispatchers.Default) {
+            listOf(
+                CounterModel(
+                    totalCounter
                 )
             )
-        }).start()
+        }
     }
-    //TODO CRIAR FUNÇÃO QUE ARMAZENA NUMERO DE CLICKS NO REPOSITÓRIO
-    fun setCounter(){
+
+    fun saveCounterNumber(counter: Int) {
+        totalCounter = counter
     }
 }

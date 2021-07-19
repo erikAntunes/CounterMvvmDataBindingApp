@@ -15,7 +15,7 @@ class CounterFragment : androidx.fragment.app.Fragment() {
         fun newInstance() = CounterFragment()
     }
 
-    //Counter ViewModel
+    // Criando Counter ViewModel
     private lateinit var viewModel: CounterViewModel
 
     override fun onCreateView(

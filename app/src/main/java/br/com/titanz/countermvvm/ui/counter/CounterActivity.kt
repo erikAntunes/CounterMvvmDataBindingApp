@@ -11,7 +11,7 @@ class CounterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_counter)
         navigateToFragmentCouter(savedInstanceState)
     }
-
+    // Navagação para o Couter Fragment
     private fun navigateToFragmentCouter(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()

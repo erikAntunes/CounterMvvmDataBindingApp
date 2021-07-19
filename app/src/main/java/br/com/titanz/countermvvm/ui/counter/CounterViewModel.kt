@@ -4,49 +4,72 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import br.com.titanz.countermvvm.repository.CounterModel
 import br.com.titanz.countermvvm.repository.CounterRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CounterViewModel(
     private val counterRepository: CounterRepository
 ) : ViewModel() {
-    private var adcNumber = 1
-    private var totalCounter: String? = null
+    private var adcCounter = 1
+    private var resetCounter = 1
+    private var saveCounter = 1
 
-    // Expondo Variavel do Contador para View
+    // Criando e Expondo LiveData para View
     private val _clickCounter = MutableLiveData<String>()
     val clickCounter: LiveData<String>
         get() = _clickCounter
 
-    // Iniciando valores da ViewModel
+    // Iniciando Contado no Init da ViewModel
     init {
-        _clickCounter.value = adcNumber.toString()
+        _clickCounter.value = adcCounter.toString()
     }
 
-    // Chamada de Variavel do Banco de Dados
-    fun getCounterLiveData(){
-        counterRepository.getCounter {
-            totalCounter = it[0].totalCounter.toString()
+    // Adicionando valor ao Contador
+    fun clickAdd() {
+        _clickCounter.value = (++adcCounter).toString()
+        saveCounter = adcCounter
+    }
+
+    // Resetando Contador
+    fun clickReset() {
+        _clickCounter.value = resetCounter.toString()
+        adcCounter = resetCounter
+        saveCounter = resetCounter
+    }
+
+    // Salvando Valor do Contador no Repositório
+    fun saveCounterNumber() {
+        Thread.sleep(1000)
+        counterRepository.saveCounterNumber(saveCounter)
+    }
+
+    // Chamando Lista de Objetos Contador do Repositório
+    fun getCounterCoroutines() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val counters = withContext(Dispatchers.Default) {
+                counterRepository.getCounterCoroutines()
+            }
+            setCounterView(counters)
         }
-        Thread.sleep(2000)
-        setCounter()
     }
 
     // Setando a variavel do Contador com Valor do Repositório
-    fun setCounter(){
-        _clickCounter.value = totalCounter.toString()
-    }
-
-    // Aplicando Regra de Negocio ao Clickar
-    fun clickMe() {
-        _clickCounter.value = (++adcNumber).toString()
+    private fun setCounterView(counters: List<CounterModel>) {
+        Thread.sleep(2000)
+        _clickCounter.value = counters[0].totalCounter.toString()
+        adcCounter = counters[0].totalCounter
     }
 
     // Factory para Injetar Repositório na ViewModel
     class CouterViewModelFactory(
         private val counterRepository: CounterRepository
-    ) : ViewModelProvider.Factory{
+    ) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-           return CounterViewModel(counterRepository) as T
+            return CounterViewModel(counterRepository) as T
         }
     }
 }
